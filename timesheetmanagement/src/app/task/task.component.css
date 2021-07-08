@@ -1,0 +1,16 @@
+.example-container {
+    width: 1475px;
+    height: 700px;
+    margin: 10px;
+    border: 2px solid rgb(218, 51, 51);
+  }
+  mat-drawer{
+      background-color: rgb(240, 248, 247);
+      width: 350px;
+  }
+  mat-card
+  {
+      background-color: rgb(233, 154, 125);
+      margin-top: 25%;
+      text-align: center;
+       }
