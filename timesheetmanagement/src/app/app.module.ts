@@ -7,9 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+<<<<<<< HEAD
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import{HttpClientModule} from '@angular/common/http';
 
+=======
+import {MatButtonModule} from '@angular/material/button';
+>>>>>>> df84508d6edb98f03ce386c06436d9a0921fc28e
 
 @NgModule({
   declarations: [
@@ -22,7 +26,12 @@ import{HttpClientModule} from '@angular/common/http';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatCardModule,
+<<<<<<< HEAD
     MatSelectModule,FormsModule,ReactiveFormsModule,HttpClientModule
+=======
+    MatSelectModule,
+    MatButtonModule
+>>>>>>> df84508d6edb98f03ce386c06436d9a0921fc28e
   ],
   providers: [],
   bootstrap: [AppComponent]
