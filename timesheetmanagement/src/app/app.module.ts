@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import{HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +22,7 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

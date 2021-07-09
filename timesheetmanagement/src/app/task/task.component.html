@@ -2,7 +2,7 @@
     <mat-drawer mode="side" opened>
         <mat-card><a style="text-decoration: none; color:white; " href="timesheet">TimeSheet</a></mat-card>
         <br>
-        <mat-card><a  style="text-decoration: none; color:white; " href="task.component.html">Tasks</a></mat-card>
+        <mat-card><a  style="text-decoration: none; color:white; " href="#tasktable">Tasks</a></mat-card>
     </mat-drawer>
     <mat-drawer-content>
         
@@ -17,7 +17,30 @@
 
     </mat-drawer-content>
   </mat-drawer-container>
-  
+  <!--task table-->
+  <div class="#tasktable">
+  <form [formGroup]="taskForm">
+      Search<input type="search" placeholder="Search Task" formControlName="search">
+      <button (click)="senddata()">Save</button>
+      <button (click)="getdata()">View</button>
+      <button (click)="updatedata()">Update</button> 
+  </form>
+  <table border="1" cellpadding="1" cellspacing="1">
+    <thead>
+        <tr *ngIf="show">
+          <th>id</th>
+          <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let task of taskdetail">
+            <td>{{task.id}}</td>
+            <td>{{task.taskname}}</td>
+        </tr>
+    </tbody>
+  </table><router-outlet></router-outlet>
+</div>
+
 <!-- <div class="table-responsive">
     <table class="table table-striped" id="tasktable">
         <thead>

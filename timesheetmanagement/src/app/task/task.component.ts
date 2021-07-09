@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { TaskserviceService } from '../taskservice.service';
 
 @Component({
   selector: 'app-task',
@@ -6,8 +8,55 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
+  taskdetail:any;
+  show:any;
+  data:any;
 
-  constructor() { }
+  constructor(private serv:TaskserviceService,private fb:FormBuilder) { }
+  taskForm=this.fb.group(
+    {
+      search:[]
+    }
+  )
+  senddata()
+    {
+      let data=this.taskForm.value;
+      this.serv.postdata(data).subscribe();
+      this.getdata();
+    }
+    getdata()
+    {
+      this.show=true;
+      this.serv.getdata().subscribe(data=>this.taskdetail=data);
+    }
+    deletedata(id:any)
+    {
+      this.serv.deletedata(id).subscribe(res=>{
+        this.getdata();
+      })
+    }
+    editdata(id:any)
+    {
+      this.serv.stusingledata(id).subscribe(
+        datas=>
+        {
+          this.data=datas;
+          this.taskForm.patchValue(
+            {
+              id:this.data.id,
+              taskname:this.data.taskname
+            }
+          )
+        }
+      )
+    }
+    updatedata()
+    {
+      let stuid=this.data.id;
+      let data=this.taskForm.value;
+      this.serv.updatedata(stuid,data).subscribe();
+      this.getdata();
+    }
 
   ngOnInit(): void {
   }
