@@ -27,3 +27,16 @@
     margin-top: 2%;
     background-color: white;
 }
+#body
+{
+    margin-top: 2%;
+}
+div{
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+.table table-striped
+{
+    height: 100%;
+}
