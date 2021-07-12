@@ -6,7 +6,6 @@ import{HttpClient} from '@angular/common/http'
 })
 export class TaskserviceService {
   private url="  http://localhost:3000/task";
-  
   constructor(private http:HttpClient) { }
   postdata(data:any)
   {

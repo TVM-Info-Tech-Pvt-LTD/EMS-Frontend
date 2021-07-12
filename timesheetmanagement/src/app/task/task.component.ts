@@ -15,7 +15,8 @@ export class TaskComponent implements OnInit {
   constructor(private serv:TaskserviceService,private fb:FormBuilder) { }
   taskForm=this.fb.group(
     {
-      search:[]
+      id:[],
+      taskname:[]
     }
   )
   senddata()
@@ -52,9 +53,9 @@ export class TaskComponent implements OnInit {
     }
     updatedata()
     {
-      let stuid=this.data.id;
+      let taskid=this.data.id;
       let data=this.taskForm.value;
-      this.serv.updatedata(stuid,data).subscribe();
+      this.serv.updatedata(taskid,data).subscribe();
       this.getdata();
     }
 

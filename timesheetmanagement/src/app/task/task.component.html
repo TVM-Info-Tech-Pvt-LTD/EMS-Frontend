@@ -15,71 +15,42 @@
           </select>
          Start Time <input type="time">
          End Time <input type="time">
-         <button mat-raised-button color="primary">Add</button>
+         <button mat-raised-button color="accent">Add</button>
        </mat-card>
         <body>
          <mat-card id="body">
              <h2>Already Added Task</h2>
              <div>
-                <table class="table table-striped" id="tasktable">
+                  <button (click)="getdata()" mat-raised-button class="demo-button">View Already Added Tasks</button>
+                 <form [formGroup]="taskForm">
+                   Id:<input type="text" formControlName="id">
+                    Taskname:<input type="text" formControlName="taskname">
+                    <button (click)="senddata()" mat-raised-button class="demo-button" color="accent">Add Task</button>
+                    <button (click)="updatedata()"mat-raised-button class="demo-button" color="accent">Update Task</button>
+               </form>
+                <table border="1" cellpadding="1" cellspacing="1" class="table table-striped" id="tasktable">
                     <thead>
-                        <tr><th>No</th>
-                        <th>Task Name</th>
-                        <th>Remove Task</th>
-                    <th>Edit Task</th></tr>
+                        <tr *ngIf="show">  
+                            <th>Id</th>
+                            <th>Task Name</th>
+                            <th>Edit Task</th>
+                            <th>Remove Task</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr><td>01</td>
-                            <td>Task1</td>
-                            <td><button mat-raised-button class="demo-button">Remove Task</button></td>
-                            <td><button mat-raised-button class="demo-button">Edit Task</button></td>
-                        
-                        </tr>
-                        <tr><td>02</td>
-                            <td>Task2</td>
-                            <td><button mat-raised-button class="demo-button">Remove Task</button></td>
-                            <td><button mat-raised-button class="demo-button">Edit Task</button></td>
-                        
-                        </tr>
-                        <tr><td>03</td>
-                            <td>Task3</td>
-                            <td><button mat-raised-button class="demo-button">Remove Task</button></td>
-                            <td><button mat-raised-button class="demo-button">Edit Task</button></td>
-                        
+                        <tr *ngFor="let task of taskdetail">
+                            <td>{{task.id}}</td>
+                            <td>{{task.taskname}}</td>
+                            <td><button (click)="editdata(task.id)" mat-raised-button class="demo-button">Edit</button></td>
+                            <td><button (click)="deletedata(task.id)" mat-raised-button class="demo-button">Delete</button></td>
                         </tr>
                     </tbody>
-                </table>
-            
-                </div> 
-                  
+                </table> </div> 
              </mat-card>   
         </body>
     </mat-drawer-content>
   </mat-drawer-container>
-<<<<<<< HEAD
-  <!--task table-->
-  <div class="#tasktable">
-  <form [formGroup]="taskForm">
-      Search<input type="search" placeholder="Search Task" formControlName="search">
-      <button (click)="senddata()">Save</button>
-      <button (click)="getdata()">View</button>
-      <button (click)="updatedata()">Update</button> 
-  </form>
-  <table border="1" cellpadding="1" cellspacing="1">
-    <thead>
-        <tr *ngIf="show">
-          <th>id</th>
-          <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-         <tr *ngFor="let task of taskdetail">
-            <td>{{task.id}}</td>
-            <td>{{task.taskname}}</td>
-        </tr>
-    </tbody>
-  </table><router-outlet></router-outlet>
-</div>
+
 
 <!-- <div class="table-responsive">
     <table class="table table-striped" id="tasktable">
@@ -110,7 +81,3 @@
 
     </div> -->
       
-=======
-  
- 
->>>>>>> df84508d6edb98f03ce386c06436d9a0921fc28e
