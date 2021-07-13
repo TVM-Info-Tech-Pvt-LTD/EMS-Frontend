@@ -5,17 +5,36 @@
         <mat-card><a  style="text-decoration: none; color:white; " href="#tasktable">Tasks</a></mat-card>
     </mat-drawer>
     <mat-drawer-content>
-        
        <mat-card id="main">
-        <select class="form-select" aria-label="Default select example">
-            <option selected>Tasks</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-         Start Time <input type="time">
-         End Time <input type="time">
-         <button mat-raised-button color="accent">Add</button>
+         <!--show timesheet table-->
+         <h2>TimeSheet</h2>
+         <div>
+            <form [formGroup]="timesheetForm">
+            <select class="form-select" aria-label="Default select example" [(ngModel)] = "selectedtask" formControlName="taskname">
+                <option [ngValue]="null" selected disabled>Select Tasks</option>
+                <option *ngFor="let user of userTask" [ngValue]="user">{{user.taskname}}</option>         
+            </select>
+             Start Time <input type="time" formControlName="stime">
+             End Time <input type="time" formControlName="etime">
+             <button mat-raised-button class="tsbutton" color="accent" (click)="sendData()">Add to timesheet</button>
+            </form>
+             <button (click)="getData()" mat-raised-button class="demo-button">View TimeSheet</button>
+            <table border="1" cellpadding="1" cellspacing="1" class="table table-striped">
+                <thead>
+                    <tr *ngIf="showtime">  
+                        <th>Task Name</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let timesheet of timedetail">
+                        <td>{{timesheet.taskname}}</td>
+                        <td>{{timesheet.stime}}</td>
+                        <td>{{timesheet.etime}}</td>
+                    </tr>
+                </tbody>
+            </table> </div>   
        </mat-card>
         <body>
          <mat-card id="body">

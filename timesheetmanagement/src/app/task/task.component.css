@@ -1,5 +1,5 @@
 .example-container {
-    width: 1475px;
+    max-width: 1350px;
     height: 700px;
     margin: 10px;
     border: 2px solid rgb(218, 51, 51);
@@ -40,7 +40,8 @@ div{
 {
     height: 100%;width:80%;
 }
-.demo-button:not(:last-child) {
+.demo-button:not(:last-child)
+ {
     margin-right: 10px;
 }
 form{
