@@ -8,11 +8,11 @@ export class TimesheetserviceService {
 
   constructor(private thttp:HttpClient) { }
   private turl=" http://localhost:8000/timesheet";
-  postData(tsdata:any)
+  postdata(data:any)
   {
-    return this.thttp.post(this.turl,tsdata);
+    return this.thttp.post(this.turl,data);
   }
-  getData()
+  getdata()
   {
     return this.thttp.get(this.turl);
   }
