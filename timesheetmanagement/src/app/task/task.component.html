@@ -12,10 +12,10 @@
             <form [formGroup]="timesheetForm">
             <select class="form-select" aria-label="Default select example" [(ngModel)] = "selectedtask" formControlName="taskname">
                 <option [ngValue]="null" selected disabled>Select Tasks</option>
-                <option *ngFor="let user of userTask" [ngValue]="user">{{user.taskname}}</option>         
+                <option *ngFor="let user of taskdetail" [ngValue]="user">{{user.taskname}}</option>         
             </select>
-             Start Time <input type="time" formControlName="stime">
-             End Time <input type="time" formControlName="etime">
+             Start Time <input type="time" formControlName="stime" name="stime">
+             End Time <input type="time" formControlName="etime" name="etime">
              <button mat-raised-button class="tsbutton" color="accent" (click)="sendData()">Add to timesheet</button>
             </form>
              <button (click)="getData()" mat-raised-button class="demo-button">View TimeSheet</button>

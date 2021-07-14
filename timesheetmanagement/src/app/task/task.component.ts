@@ -10,25 +10,7 @@ import { TimesheetserviceService } from '../timesheetservice.service';
 })
 export class TaskComponent implements OnInit {
   
-  selectedtask = null;showtime:any;timedetail:any;
-  userTask=[
-    {
-      "id": "1",
-      "taskname": "Task1"
-    },
-    {
-      "id": "2",
-      "taskname": "Task2"
-    },
-    {
-      "id": "4",
-      "taskname": "task4edit"
-    },
-    {
-      "id": "06",
-      "taskname": "task6"
-    }
-  ];
+  selectedtask = null;showtime:any;timedetail:any;stime:any;
   timesheetForm=this.fb.group(
     {
       taskname:[],
@@ -36,17 +18,22 @@ export class TaskComponent implements OnInit {
       etime:[]
     }
   )
-   sendData()
-    {
-      let data=this.timesheetForm.value;
-      this.timeserv.postdata(data).subscribe();
-      this.getData();
-    }
-    getData()
-    {
-      this.showtime=true;
-      this.timeserv.getdata().subscribe(data=>this.timedetail=data);
-    }
+  sendData()
+  {
+    let data=this.timesheetForm.value;
+    let data2=this.selectedtask;
+    let data3=this.stime;
+    this.timeserv.postdata(data2,data).subscribe();
+   // this.timeserv.postdata(data3).subscribe();
+    console.log(data);
+    this.getdata();
+  }
+  getData()
+  {
+    this.showtime=true;
+    this.timeserv.getdata().subscribe(data=>this.timedetail=data);
+  }
+
     //task crud methods started..
   taskdetail:any;
   show:any;
@@ -97,8 +84,6 @@ export class TaskComponent implements OnInit {
       this.serv.updatedata(taskid,data).subscribe();
       this.getdata();
     }
-
   ngOnInit(): void {
   }
-
 }

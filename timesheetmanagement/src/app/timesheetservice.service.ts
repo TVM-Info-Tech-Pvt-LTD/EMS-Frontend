@@ -5,15 +5,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class TimesheetserviceService {
-
+  private url2=" http://localhost:3000/timesheet";
   constructor(private thttp:HttpClient) { }
-  private turl=" http://localhost:8000/timesheet";
-  postdata(data:any)
+  postdata(data:any,data2:any)
   {
-    return this.thttp.post(this.turl,data);
+    return this.thttp.post(this.url2,data,data2);
   }
   getdata()
   {
-    return this.thttp.get(this.turl);
+    return this.thttp.get(this.url2);
   }
+  deletedata(id:any)
+  {
+    return this.thttp.delete(this.url2+"/"+id);
+  }
+  updatedata(id:any,data:any)
+  {
+    return this.thttp.put(this.url2+"/"+id,data);
+  }
+  stusingledata(id:any)
+  {
+    return this.thttp.get(this.url2+"/"+id);
+  }
+
 }
