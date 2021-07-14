@@ -4,6 +4,11 @@
       "taskname": "task",
       "stime": "10.00",
       "etime": "08.00"
-    }
+    },
+    { 
+    "taskname": "task2",
+    "stime": "09.00",
+    "etime": "09.00"
+   }
   ]
 }

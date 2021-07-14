@@ -27,30 +27,25 @@ export class TaskComponent implements OnInit {
     {
       "id": "06",
       "taskname": "task6"
-    },
-    {
-      "id": "07",
-      "taskname": "editedd"
     }
   ];
   timesheetForm=this.fb.group(
     {
       taskname:[],
-      soption:[],
       stime:[],
       etime:[]
     }
   )
    sendData()
     {
-      let tsdata=this.timesheetForm.value;
-      this.timeserv.postData(tsdata).subscribe();
+      let data=this.timesheetForm.value;
+      this.timeserv.postdata(data).subscribe();
       this.getData();
     }
     getData()
     {
       this.showtime=true;
-      this.timeserv.getData().subscribe(tsdata=>this.timedetail=tsdata);
+      this.timeserv.getdata().subscribe(data=>this.timedetail=data);
     }
     //task crud methods started..
   taskdetail:any;
